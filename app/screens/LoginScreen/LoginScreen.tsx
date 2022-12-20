@@ -7,14 +7,23 @@ import {
   Pressable,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { styles } from "./styles";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
 
+  const storeUsername = async () => {
+    try {
+      await AsyncStorage.setItem("username", username);
+    } catch (error) {
+      Alert.alert("Error! While saving username");
+    }
+  }
+
   const handleSignIn = () => {
     if (username.trim()) {
-      console.log({username});
+      storeUsername();
     } else {
       Alert.alert("Username is required.")
     }
