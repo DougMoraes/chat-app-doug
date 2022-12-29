@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Pressable, SafeAreaView, FlatList } from 'react-native';
 import { Feather } from "@expo/vector-icons";
-import Chat from "./components/Chat"
+import Chat from "./components/Chat";
+import Modal from "./components/Modal";
 import { styles } from "./styles";
 
 const ChatScreen = () => {
+	const [visible, setVisible] = useState(false);
+
 	// Mock rooms
 	const rooms = [
 		{
@@ -51,8 +54,7 @@ const ChatScreen = () => {
 				<View style={styles.chatheader}>
 					<Text style={styles.chatheading}>Chats</Text>
 
-			{/* 👇🏻 Logs "ButtonPressed" to the console when the icon is clicked */}
-					<Pressable onPress={() => console.log("Button Pressed!")}>
+					<Pressable onPress={() => setVisible(true)}>
 						<Feather name='edit' size={24} color='green' />
 					</Pressable>
 				</View>
@@ -72,6 +74,7 @@ const ChatScreen = () => {
 					</View>
 				)}
 			</View>
+			{visible ? <Modal setVisible={setVisible} /> : ""}
 		</SafeAreaView>
 	);
 }
