@@ -12,3 +12,7 @@ export type itemType = {
 export type chatType = {
   item: itemType
 };
+
+export type modalType = {
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>,
+};
