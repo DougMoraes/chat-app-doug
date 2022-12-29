@@ -8,14 +8,17 @@ import {
   Alert,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 import { styles } from "./styles";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
+  const navigation = useNavigation();
 
   const storeUsername = async () => {
     try {
       await AsyncStorage.setItem("username", username);
+      navigation.navigate("Chat");
     } catch (error) {
       Alert.alert("Error! While saving username");
     }
