@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, SafeAreaView, FlatList } from 'react-native';
 import { Feather } from "@expo/vector-icons";
+import Chat from "./components/Chat"
 import { styles } from "./styles";
 
 const ChatScreen = () => {
@@ -61,7 +62,7 @@ const ChatScreen = () => {
 				{rooms.length > 0 ? (
 					<FlatList
 						data={rooms}
-            renderItem={({ item }) => <View/>}
+						renderItem={({ item }) => <Chat item={item} />}
 						keyExtractor={(item) => item.id}
 					/>
 				) : (
