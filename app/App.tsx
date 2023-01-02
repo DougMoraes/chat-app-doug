@@ -3,8 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import ChatScreen from "./screens/ChatScreen/ChatScreen";
+import { RootStackParamList } from "./types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
