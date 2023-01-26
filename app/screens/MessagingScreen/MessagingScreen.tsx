@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { View, TextInput, Text, FlatList, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Message from './components/Message';
 import { styles } from "./styles";
 import { messagingScreenProps } from "./types";
 
@@ -77,7 +78,7 @@ const MessagingScreen = ({ route, navigation } : messagingScreenProps ) => {
                     <FlatList
                         data={chatMessages}
                         renderItem={({ item }) => (
-                            <View />
+                            <Message item={item} user={user} />
                         )}
                         keyExtractor={(item) => item.id}
                     />
