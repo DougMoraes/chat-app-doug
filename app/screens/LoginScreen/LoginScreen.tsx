@@ -9,11 +9,13 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from '@react-navigation/stack';
 import { styles } from "./styles";
+import { RootStackParamList } from "../../types";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const storeUsername = async () => {
     try {
