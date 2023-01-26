@@ -1,13 +1,16 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
+import socket from "../../../utils/socket"
 import { styles } from "../styles";
 import { modalType } from "../types";
 
 const Modal = ({ setVisible }: modalType) => {
   const [groupName, setGroupName] = useState("");
+
   const closeModal = () => setVisible(false);
+
   const handleCreateRoom = () => {
-      console.log({ groupName });
+      socket.emit("createRoom", groupName);
       closeModal();
   };
 
